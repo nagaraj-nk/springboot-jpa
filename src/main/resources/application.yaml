@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db2
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password:
+  jpa:
+    show-sql: true
+custom_property: 100
