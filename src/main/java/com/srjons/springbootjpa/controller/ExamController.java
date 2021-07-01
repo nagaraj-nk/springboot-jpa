@@ -1,12 +1,11 @@
 package com.srjons.springbootjpa.controller;
 
 import com.srjons.springbootjpa.model.DifferentExam;
+import com.srjons.springbootjpa.model.Exam;
 import com.srjons.springbootjpa.repository.DifferentExamRepository;
+import com.srjons.springbootjpa.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,16 +14,24 @@ import java.util.List;
 public class ExamController {
 
     @Autowired
-    DifferentExamRepository examRepository;
+    DifferentExamRepository differentExamRepository;
+
+    @Autowired
+    ExamRepository examRepository;
 
     @GetMapping
     public List<DifferentExam> findAll() {
-        return examRepository.findAll();
+        return differentExamRepository.findAll();
     }
 
     @GetMapping("/{id}")
     public DifferentExam findById(@PathVariable("id") int id) {
-        return examRepository.findExamById(id);
+        return differentExamRepository.findExamById(id);
+    }
+
+    @PostMapping("/create")
+    public void addExam(@RequestBody Exam exam) {
+        examRepository.save(exam);
     }
 
 }

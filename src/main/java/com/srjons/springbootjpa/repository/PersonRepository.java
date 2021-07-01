@@ -10,5 +10,4 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
     @Query(value = "select name from person where id = ?1", nativeQuery = true)
     PersonNameRepo findPersonaNameByNativeQuery(int id);
 
-
 }

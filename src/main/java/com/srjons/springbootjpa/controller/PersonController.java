@@ -35,4 +35,9 @@ public class PersonController {
     public PersonName findPersonNameById(@PathVariable("id") int id) {
         return personService.findPersonNameById(id);
     }
+
+    @DeleteMapping("/{id}/delete")
+    public void deleteById(@PathVariable("id") Integer id) {
+        personService.delete(id);
+    }
 }

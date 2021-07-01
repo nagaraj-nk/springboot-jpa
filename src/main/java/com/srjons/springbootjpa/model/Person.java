@@ -32,11 +32,11 @@ public class Person {
 	private List<Exam> exams;
 
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "person_id")
 	private Set<Mobile> mobiles;
 

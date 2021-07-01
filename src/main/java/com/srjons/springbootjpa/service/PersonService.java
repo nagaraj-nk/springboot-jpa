@@ -35,4 +35,8 @@ public class PersonService {
     public PersonName findPersonNameById(int id) {
         return new PersonName(personRepository.findPersonaNameByNativeQuery(id).getName());
     }
+
+    public void delete(int id){
+        personRepository.deleteById(id);
+    }
 }
