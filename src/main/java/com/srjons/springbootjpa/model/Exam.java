@@ -1,16 +1,8 @@
 package com.srjons.springbootjpa.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.srjons.springbootjpa.serializer.CustomExamListSerializer;
-import com.srjons.springbootjpa.serializer.CustomPersonListSerializer;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
@@ -23,11 +15,7 @@ public class Exam {
 	private String name;
 
 	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY,
-			cascade = {
-					CascadeType.PERSIST,
-					CascadeType.MERGE
-			}, mappedBy = "exams")
+	@ManyToMany(mappedBy = "exams")
 	private List<Person> persons;
 
 	public List<Person> getPersons() {

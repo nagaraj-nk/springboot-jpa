@@ -1,19 +1,10 @@
 package com.srjons.springbootjpa.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.srjons.springbootjpa.serializer.CustomExamListSerializer;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,11 +25,7 @@ public class Person {
 	private int id;
 	private String name;
 
-	@ManyToMany(fetch = FetchType.LAZY,
-			cascade = {
-					CascadeType.PERSIST,
-					CascadeType.MERGE
-			})
+	@ManyToMany()
 	@JoinTable(name = "person_exam",
 			joinColumns = @JoinColumn(name = "person_id"),
 			inverseJoinColumns = @JoinColumn(name = "exam_id"))

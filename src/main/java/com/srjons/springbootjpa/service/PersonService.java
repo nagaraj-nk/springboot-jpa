@@ -1,6 +1,7 @@
 package com.srjons.springbootjpa.service;
 
 import com.srjons.springbootjpa.model.Person;
+import com.srjons.springbootjpa.model.PersonName;
 import com.srjons.springbootjpa.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,9 @@ public class PersonService {
 
     public Person findPersonById(int id) {
         return personRepository.findPersonById(id);
+    }
+
+    public PersonName findPersonNameById(int id) {
+        return new PersonName(personRepository.findPersonaNameByNativeQuery(id).getName());
     }
 }
